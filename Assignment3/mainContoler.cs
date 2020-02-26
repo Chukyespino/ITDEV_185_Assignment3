@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Assignment3
 {
@@ -16,29 +17,27 @@ namespace Assignment3
             {
                 int select;
                 string name;
-                Console.WriteLine("PLease make a selection");
-                Console.WriteLine("1: Add Name to List");
-                Console.WriteLine("2: Display List");
-                Console.WriteLine("3:Quit");
+                Console.WriteLine("Enter 1 for Name Input.");
+                Console.WriteLine("Enter 2 for List Display.");
+                Console.WriteLine("Enter 3 to Exit.");
 
                 select = Convert.ToInt32(Console.ReadLine());
-
-                if (select == 3)
-                    break;
-                Console.Clear();
 
                 switch (select)
                 {
                     case 1:
-                        Console.WriteLine("Enter Name: ");
+                        Console.WriteLine("Enter new name: ");
                         name = Console.ReadLine();
                         list(name);
                         Console.Clear();
                         break;
                     case 2:
-                        Console.WriteLine("Names In list");
+                        Console.WriteLine("Name list:");
                         display();
                         Console.WriteLine();
+                        break;
+                    case 3:
+                        close();
                         break;
 
                 }
@@ -57,6 +56,13 @@ namespace Assignment3
             {
                 Console.WriteLine(name);
             }
+        }
+        public void close()
+        {
+            Console.Clear();
+            Console.WriteLine("Good Bye...");
+            Thread.Sleep(2000);
+            Environment.Exit(-1);
         }
     }
 }
